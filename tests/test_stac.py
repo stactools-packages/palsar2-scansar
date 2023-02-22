@@ -1,4 +1,4 @@
-from stactools.ephemeral import stac
+from stactools.palsar2_scansar import stac
 
 
 def test_create_collection() -> None:
