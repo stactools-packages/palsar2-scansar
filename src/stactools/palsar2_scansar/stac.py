@@ -3,17 +3,22 @@ from datetime import datetime, timezone
 
 from pystac import (
     Asset,
-    CatalogType,
     Collection,
     Extent,
     Item,
     MediaType,
-    Provider,
-    ProviderRole,
     SpatialExtent,
+    Summaries,
     TemporalExtent,
 )
+from pystac.extensions.eo import EOExtension
+from pystac.extensions.item_assets import ItemAssetsExtension
 from pystac.extensions.projection import ProjectionExtension
+from pystac.extensions.raster import RasterExtension
+from pystac.extensions.sar import SarExtension
+from pystac.extensions.sat import SatExtension
+
+from stactools.palsar2_scansar import constants as c
 
 logger = logging.getLogger(__name__)
 
@@ -30,13 +35,6 @@ def create_collection() -> Collection:
     Returns:
         Collection: STAC Collection object
     """
-    providers = [
-        Provider(
-            name="The OS Community",
-            roles=[ProviderRole.PRODUCER, ProviderRole.PROCESSOR, ProviderRole.HOST],
-            url="https://github.com/stac-utils/stactools",
-        )
-    ]
 
     # Time must be in UTC
     demo_time = datetime.now(tz=timezone.utc)
@@ -46,15 +44,32 @@ def create_collection() -> Collection:
         TemporalExtent([[demo_time, None]]),
     )
 
+    summary_dict = {
+        "platform": c.SCANSAR_PALSAR_PLATFORMS,
+    }
+
     collection = Collection(
-        id="my-collection-id",
-        title="A dummy STAC Collection",
-        description="Used for demonstration purposes",
-        license="CC-0",
-        providers=providers,
+        id="palsar2-scansar",
+        title="ALOS-2 PALSAR-2 ScanSAR",
+        description=c.SCANSAR_DESCRIPTION,
+        providers=c.SCANSAR_PALSAR_PROVIDERS,
         extent=extent,
-        catalog_type=CatalogType.RELATIVE_PUBLISHED,
+        summaries=Summaries(summary_dict),
+        stac_extensions=[
+            ItemAssetsExtension.get_schema_uri(),
+            ProjectionExtension.get_schema_uri(),
+            RasterExtension.get_schema_uri(),
+            SarExtension.get_schema_uri(),
+            SatExtension.get_schema_uri(),
+            EOExtension.get_schema_uri(),
+        ],
     )
+
+    # Links
+    collection.add_links(c.SCANSAR_LINKS)
+
+    assets = ItemAssetsExtension.ext(collection, add_if_missing=True)
+    assets.item_assets = c.SCANSAR_ASSETS
 
     return collection
 

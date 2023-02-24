@@ -12,7 +12,7 @@ def create_palsar2scansar_command(cli: Group) -> Command:
     """Creates the stactools-palsar2-scansar command line utility."""
 
     @cli.group(
-        "palsar2scansar",
+        "palsar2-scansar",
         short_help=("Commands for working with stactools-palsar2-scansar"),
     )
     def palsar2scansar() -> None:
