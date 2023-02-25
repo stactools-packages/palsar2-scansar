@@ -88,14 +88,7 @@ class ProductMetadata:
         end_time = self.end_datetime
 
         if start_time is not None:
-            central_time = (
-                datetime.strptime(str(start_time), "%Y-%m-%dT%H:%M:%S.%f+00.00")
-                + (
-                    datetime.strptime(str(end_time), "%Y-%m-%dT%H:%M:%S.%f+00.00")
-                    - datetime.strptime(str(start_time), "%Y-%m-%dT%H:%M:%S.%f+00.00")
-                )
-                / 2
-            )
+            central_time = start_time + (end_time - start_time) / 2
 
         if central_time is None:
             raise ValueError(
