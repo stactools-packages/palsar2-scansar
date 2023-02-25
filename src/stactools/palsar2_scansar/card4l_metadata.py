@@ -81,3 +81,37 @@ class ProductMetadata:
             )
         else:
             return str_to_datetime(time)
+
+    @property
+    def get_datetime(self) -> datetime:
+        start_time = self.start_datetime
+        end_time = self.end_datetime
+
+        if start_time is not None:
+            central_time = (
+                datetime.strptime(str(start_time), "%Y-%m-%dT%H:%M:%S.%f+00.00")
+                + (
+                    datetime.strptime(str(end_time), "%Y-%m-%dT%H:%M:%S.%f+00.00")
+                    - datetime.strptime(str(start_time), "%Y-%m-%dT%H:%M:%S.%f+00.00")
+                )
+                / 2
+            )
+
+        if central_time is None:
+            raise ValueError(
+                "Cannot determine product start time using product metadata "
+                f"at {self.href}"
+            )
+        else:
+            return str_to_datetime(str(central_time))
+
+    @property
+    def get_shape(self) -> List[int]:
+        rows = int(
+            self._root.find_text_or_throw(".//NumberLines", ProductMetadataError)
+        )
+        cols = int(
+            self._root.find_text_or_throw(".//NumPixelsPerLine", ProductMetadataError)
+        )
+        shape = [rows, cols]
+        return shape

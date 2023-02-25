@@ -105,36 +105,26 @@ def create_item(
 
     product_metadata = ProductMetadata(granule_href, metalinks.manifest)
 
-    properties = {
-        "title": "A dummy STAC Item",
-        "description": "Used for demonstration purposes",
-    }
-
-    # demo_geom = {
-    #     "type": "Polygon",
-    #     "coordinates": [[[-180, -90], [180, -90], [180, 90], [-180, 90], [-180, -90]]],
-    # }
-
-    # Time must be in UTC
-    demo_time = datetime.now(tz=timezone.utc)
-
     item = Item(
         id=os.path.basename(granule_href),
-        properties=properties,
+        properties={},
         geometry=product_metadata.geometry,
         bbox=product_metadata.bbox,
-        datetime=demo_time,
+        datetime=product_metadata.get_datetime,
         stac_extensions=[],
     )
 
     # It is a good idea to include proj attributes to optimize for libs like stac-vrt
     proj_attrs = ProjectionExtension.ext(item, add_if_missing=True)
-    proj_attrs.epsg = 4326
-    proj_attrs.bbox = [-180, 90, 180, -90]
-    proj_attrs.shape = [1, 1]  # Raster shape
-    proj_attrs.transform = [-180, 360, 0, 90, 0, 180]  # Raster GeoTransform
+    proj_attrs.epsg = c.SCANSAR_PALSAR_EPSG
+    proj_attrs.bbox = product_metadata.bbox
+    proj_attrs.shape = product_metadata.get_shape  # Raster shape ProductImageSize
+    # proj_attrs.transform = [-180, 360, 0, 90, 0, 180]  # Raster GeoTransform
 
-    # Add an asset to the item (COG for example)
+    # TODO: get list of assets from metadata
+    # assets = ["HH_SLP","HV_SLP","MSK", "LIN", "summary", "kml"]
+
+    # Add an asset to the item
     item.add_asset(
         "image",
         Asset(
