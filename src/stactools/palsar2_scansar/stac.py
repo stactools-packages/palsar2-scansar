@@ -1,5 +1,7 @@
 import logging
+import os
 from datetime import datetime, timezone
+from typing import Any
 
 from pystac import (
     Asset,
@@ -19,6 +21,8 @@ from pystac.extensions.sar import SarExtension
 from pystac.extensions.sat import SatExtension
 
 from stactools.palsar2_scansar import constants as c
+
+from .card4l_metadata import MetadataLinks, ProductMetadata
 
 logger = logging.getLogger(__name__)
 
@@ -74,39 +78,51 @@ def create_collection() -> Collection:
     return collection
 
 
-def create_item(asset_href: str) -> Item:
+def create_item(
+    granule_href: str,
+    **kwargs: Any,
+) -> Item:
     """Create a STAC Item
 
     This function should include logic to extract all relevant metadata from an
     asset, metadata asset, and/or a constants.py file.
 
     See `Item<https://pystac.readthedocs.io/en/latest/api.html#item>`_.
+    Example:
+        ALOS2397743750-211004_WBDR2.2GUD
 
     Args:
-        asset_href (str): The HREF pointing to an asset associated with the item
+        granule_href (str): The HREF pointing to a granule ID
 
     Returns:
         Item: STAC Item object
     """
+
+    metalinks = MetadataLinks(
+        granule_href,
+        **kwargs,
+    )
+
+    product_metadata = ProductMetadata(granule_href, metalinks.manifest)
 
     properties = {
         "title": "A dummy STAC Item",
         "description": "Used for demonstration purposes",
     }
 
-    demo_geom = {
-        "type": "Polygon",
-        "coordinates": [[[-180, -90], [180, -90], [180, 90], [-180, 90], [-180, -90]]],
-    }
+    # demo_geom = {
+    #     "type": "Polygon",
+    #     "coordinates": [[[-180, -90], [180, -90], [180, 90], [-180, 90], [-180, -90]]],
+    # }
 
     # Time must be in UTC
     demo_time = datetime.now(tz=timezone.utc)
 
     item = Item(
-        id="my-item-id",
+        id=os.path.basename(granule_href),
         properties=properties,
-        geometry=demo_geom,
-        bbox=[-180, 90, 180, -90],
+        geometry=product_metadata.geometry,
+        bbox=product_metadata.bbox,
         datetime=demo_time,
         stac_extensions=[],
     )
@@ -122,7 +138,7 @@ def create_item(asset_href: str) -> Item:
     item.add_asset(
         "image",
         Asset(
-            href=asset_href,
+            href=granule_href,
             media_type=MediaType.COG,
             roles=["data"],
             title="A dummy STAC Item COG",

@@ -20,7 +20,9 @@ class CommandsTest(CliTestCase):
             # Example:
             destination = os.path.join(tmp_dir, "collection.json")
 
-            result = self.run_command(f"palsar2scansar create-collection {destination}")
+            result = self.run_command(
+                f"palsar2-scansar create-collection {destination}"
+            )
 
             assert result.exit_code == 0, "\n{}".format(result.output)
 
@@ -28,7 +30,7 @@ class CommandsTest(CliTestCase):
             assert len(jsons) == 1
 
             collection = pystac.read_file(destination)
-            assert collection.id == "my-collection-id"
+            assert collection.id == "palsar2-scansar"
             # assert collection.other_attr...
 
             collection.validate()
@@ -38,10 +40,10 @@ class CommandsTest(CliTestCase):
             # Run your custom create-item command and validate
 
             # Example:
-            infile = "/path/to/asset.tif"
+            infile = "tests/data-files/ALOS2412212550-220110_WBSR2.2GUD"
             destination = os.path.join(tmp_dir, "item.json")
             result = self.run_command(
-                f"palsar2scansar create-item {infile} {destination}"
+                f"palsar2-scansar create-item {infile} {destination}"
             )
             assert result.exit_code == 0, "\n{}".format(result.output)
 
@@ -49,7 +51,7 @@ class CommandsTest(CliTestCase):
             assert len(jsons) == 1
 
             item = pystac.read_file(destination)
-            assert item.id == "my-item-id"
+            assert item.id == "ALOS2412212550-220110_WBSR2.2GUD"
             # assert item.other_attr...
 
             item.validate()
