@@ -108,3 +108,10 @@ class ProductMetadata:
         )
         shape = [rows, cols]
         return shape
+
+    @property
+    def get_epsg(self) -> str:
+        epsg = self._root.find_text_or_throw(
+            ".//CoordinateReferenceSystem[@type='EPSG']", ProductMetadataError
+        )
+        return epsg

@@ -3,6 +3,7 @@ import os
 from datetime import datetime, timezone
 from typing import Any
 
+import rasterio
 from pystac import (
     Asset,
     Collection,
@@ -105,21 +106,28 @@ def create_item(
 
     product_metadata = ProductMetadata(granule_href, metalinks.manifest)
 
-    item = Item(
-        id=os.path.basename(granule_href),
-        properties={},
-        geometry=product_metadata.geometry,
-        bbox=product_metadata.bbox,
-        datetime=product_metadata.get_datetime,
-        stac_extensions=[],
-    )
+    asset_href = f"{granule_href}_HH_SLP.tif"
+    with rasterio.open(asset_href) as dataset:
+        bbox = list(dataset.bounds)
+        # geometry = mapping(box(*bbox))
+        # transform = dataset.transform
+        # shape = dataset.shape
 
-    # It is a good idea to include proj attributes to optimize for libs like stac-vrt
-    proj_attrs = ProjectionExtension.ext(item, add_if_missing=True)
-    proj_attrs.epsg = c.SCANSAR_PALSAR_EPSG
-    proj_attrs.bbox = product_metadata.bbox
-    proj_attrs.shape = product_metadata.get_shape  # Raster shape ProductImageSize
-    # proj_attrs.transform = [-180, 360, 0, 90, 0, 180]  # Raster GeoTransform
+        item = Item(
+            id=os.path.basename(granule_href),
+            properties={},
+            geometry=product_metadata.geometry,
+            bbox=product_metadata.bbox,
+            datetime=product_metadata.get_datetime,
+            stac_extensions=[],
+        )
+
+        # It is a good idea to include proj attributes to optimize for libs like stac-vrt
+        proj_attrs = ProjectionExtension.ext(item, add_if_missing=True)
+        proj_attrs.epsg = dataset.crs.to_epsg()
+        proj_attrs.bbox = bbox
+        proj_attrs.shape = product_metadata.get_shape  # Raster shape ProductImageSize
+        # proj_attrs.transform = [-180, 360, 0, 90, 0, 180]  # Raster GeoTransform
 
     # TODO: get list of assets from metadata
     # assets = ["HH_SLP","HV_SLP","MSK", "LIN", "summary", "kml"]
