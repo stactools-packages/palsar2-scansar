@@ -14,16 +14,19 @@ from pystac import (
     Summaries,
     TemporalExtent,
 )
-from pystac.extensions.eo import EOExtension
+
+# from pystac.extensions.eo import EOExtension
 from pystac.extensions.item_assets import ItemAssetsExtension
 from pystac.extensions.projection import ProjectionExtension
 from pystac.extensions.raster import RasterExtension
 from pystac.extensions.sar import SarExtension
-from pystac.extensions.sat import SatExtension
 
 from stactools.palsar2_scansar import constants as c
 
 from .card4l_metadata import MetadataLinks, ProductMetadata
+
+# from pystac.extensions.sat import SatExtension
+
 
 logger = logging.getLogger(__name__)
 
@@ -65,13 +68,28 @@ def create_collection() -> Collection:
             ProjectionExtension.get_schema_uri(),
             RasterExtension.get_schema_uri(),
             SarExtension.get_schema_uri(),
-            SatExtension.get_schema_uri(),
-            EOExtension.get_schema_uri(),
+            # SatExtension.get_schema_uri(),
+            # EOExtension.get_schema_uri(),
         ],
     )
 
     # Links
     collection.add_links(c.SCANSAR_LINKS)
+
+    # SAR Extension
+    sar = SarExtension.summaries(collection, add_if_missing=True)
+    sar.looks_range = c.SCANSAR_SAR["looks_range"]
+    sar.product_type = c.SCANSAR_SAR["product_type"]
+    sar.looks_azimuth = c.SCANSAR_SAR["looks_azimuth"]
+    sar.polarizations = c.SCANSAR_SAR["polarizations"]
+    sar.frequency_band = c.SCANSAR_SAR["frequency_band"]
+    sar.instrument_mode = c.SCANSAR_SAR["instrument_mode"]
+    sar.center_frequency = c.SCANSAR_SAR["center_frequency"]
+    sar.resolution_range = c.SCANSAR_SAR["resolution_range"]
+    sar.resolution_azimuth = c.SCANSAR_SAR["resolution_azimuth"]
+    sar.pixel_spacing_range = c.SCANSAR_SAR["pixel_spacing_range"]
+    sar.pixel_spacing_azimuth = c.SCANSAR_SAR["pixel_spacing_azimuth"]
+    sar.looks_equivalent_number = c.SCANSAR_SAR["looks_equivalent_number"]
 
     assets = ItemAssetsExtension.ext(collection, add_if_missing=True)
     assets.item_assets = c.SCANSAR_ASSETS
@@ -129,6 +147,10 @@ def create_item(
         proj_attrs.bbox = bbox
         proj_attrs.shape = product_metadata.get_shape  # Raster shape ProductImageSize
         # proj_attrs.transform = [-180, 360, 0, 90, 0, 180]  # Raster GeoTransform
+
+    # -- Add Extensions --
+    # sar
+    # sar = SarExtension.ext(item, add_if_missing=True)
 
     # TODO: get list of assets from metadata
     # assets = ["HH_SLP","HV_SLP","MSK", "LIN", "summary", "kml"]

@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Optional
+from typing import Any, Dict, Optional
 
 import pystac
 from pystac import Link, Provider
@@ -12,11 +12,10 @@ from pystac.utils import str_to_datetime
 # Time must be in UTC
 # TODO: update to match bucket
 SCANSAR_COLLECTION_START: Optional[datetime] = str_to_datetime("2015-01-01T00:00:00Z")
-SCANSAR_COLLECTION_END: Optional[datetime] = str_to_datetime("2020-12-31T23:59:59Z")
-SCANSAR_TEMPORAL_EXTENT = [SCANSAR_COLLECTION_START, SCANSAR_COLLECTION_END]
+SCANSAR_TEMPORAL_EXTENT = [SCANSAR_COLLECTION_START, None]
 
 # TODO: update to match bucket
-SCANSAR_SPATIAL_EXTENT = [[-180.0, -56.0, 180.0, 85.0]]
+SCANSAR_SPATIAL_EXTENT = [[-180.0, -56, 180.0, 85.0]]
 
 SCANSAR_PALSAR_PROVIDERS = [
     Provider(
@@ -50,16 +49,26 @@ SCANSAR_LINKS = [
 ]
 
 
-SCANSAR_PALSAR_PLATFORMS = ["ALOS-2"]
+SCANSAR_PALSAR_PLATFORMS = ["ALOS2"]
 SCANSAR_PALSAR_INSTRUMENTS = ["PALSAR-2"]
 SCANSAR_PALSAR_GSD = 25  # meters
 SCANSAR_PALSAR_EPSG = 4326
 SCANSAR_PALSAR_CF = "83.0 dB"
 
-SCANSAR_FREQUENCY_BAND = sar.FrequencyBand.L
-SCANSAR_POLARIZATIONS = [sar.Polarization.HH, sar.Polarization.HV]
-SCANSAR_INSTRUMENT_MODE = "FBD"  # Fine Beam Dual mode
-SCANSAR_PRODUCT_TYPE = "GTC"  # Geometric Terrain Corrected
+SCANSAR_SAR: Dict[str, Any] = {
+    "looks_range": [1],
+    "product_type": ["GRD"],
+    "looks_azimuth": [1],
+    "polarizations": [sar.Polarization.HH, sar.Polarization.HV],
+    "frequency_band": [sar.FrequencyBand.L],
+    "instrument_mode": ["WBD"],
+    "center_frequency": [1.2575],
+    "resolution_range": [19],
+    "resolution_azimuth": [25.9],
+    "pixel_spacing_range": [8.583],
+    "pixel_spacing_azimuth": [325.003],
+    "looks_equivalent_number": [2.7],
+}
 
 SCANSAR_ASSETS = {
     "HH_SLP": AssetDefinition(

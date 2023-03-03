@@ -32,9 +32,7 @@
     "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json",
     "https://stac-extensions.github.io/projection/v1.0.0/schema.json",
     "https://stac-extensions.github.io/raster/v1.1.0/schema.json",
-    "https://stac-extensions.github.io/sar/v1.0.0/schema.json",
-    "https://stac-extensions.github.io/sat/v1.0.0/schema.json",
-    "https://stac-extensions.github.io/eo/v1.0.0/schema.json"
+    "https://stac-extensions.github.io/sar/v1.0.0/schema.json"
   ],
   "item_assets": {
     "HH_SLP": {
@@ -95,7 +93,7 @@
     "temporal": {
       "interval": [
         [
-          "2023-03-03T00:23:03.258566Z",
+          "2023-03-03T01:08:21.719462Z",
           null
         ]
       ]
@@ -122,7 +120,44 @@
   ],
   "summaries": {
     "platform": [
-      "ALOS-2"
+      "ALOS2"
+    ],
+    "sar:looks_range": [
+      1
+    ],
+    "sar:product_type": [
+      "GRD"
+    ],
+    "sar:looks_azimuth": [
+      1
+    ],
+    "sar:polarizations": [
+      "HH",
+      "HV"
+    ],
+    "sar:frequency_band": [
+      "L"
+    ],
+    "sar:instrument_mode": [
+      "WBD"
+    ],
+    "sar:center_frequency": [
+      1.2575
+    ],
+    "sar:resolution_range": [
+      19
+    ],
+    "sar:resolution_azimuth": [
+      25.9
+    ],
+    "sar:pixel_spacing_range": [
+      8.583
+    ],
+    "sar:pixel_spacing_azimuth": [
+      325.003
+    ],
+    "sar:looks_equivalent_number": [
+      2.7
     ]
   }
 }
