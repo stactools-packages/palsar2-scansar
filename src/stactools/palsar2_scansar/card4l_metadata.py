@@ -16,8 +16,7 @@ class MetadataLinks:
         **kwargs: Any,
     ) -> None:
         self.granule_href = granule_href
-        self.href = f"{granule_href}_summary.xml"
-
+        self.href = granule_href
         self.manifest = XmlElement.from_file(self.href, **kwargs)
 
 

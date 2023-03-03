@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Product type="Normalised Radar Backscatter" copyright="JAXA/EORC" version="5.5">
+	<DocumentIdentifier type="URL">https://ceos.org/ard/files/PFS/NRB/v5.5/CARD4L-PFS_NRB_v5.5.pdf</DocumentIdentifier>
+	<DataCollectionTime>
+		<NumberOfAcquisitions>1</NumberOfAcquisitions>
+		<FirstAcquisitionDate>2022-06-30T15:58:00.078Z</FirstAcquisitionDate>
+		<LastAcquisitionDate>2022-06-30T15:58:56.442Z</LastAcquisitionDate>
+	</DataCollectionTime>
+	<SourceAttributes acqID="1">
+		<SourceDataRepository type="URL">https://gportal.jaxa.jp/gpr/?lang=en</SourceDataRepository>
+		<Satellite>ALOS2</Satellite>
+		<Instrument>PALSAR-2</Instrument>
+		<SatelliteReference type="URL">https://directory.eoportal.org/web/eoportal/satellite-missions/a/alos-2</SatelliteReference>
+		<SourceDataAcquisitionTime>
+			<StartTime>2022-06-30T15:58:00.078Z</StartTime>
+			<EndTime>2022-06-30T15:58:56.442Z</EndTime>
+		</SourceDataAcquisitionTime>
+		<SourceDataAcquisitionParameters>
+			<RadarBand>L</RadarBand>
+			<RadarCenterFrequency units="GHz">1.23650e+00</RadarCenterFrequency>
+			<ObservationMode>WWD</ObservationMode>
+			<Polarizations>HH HV</Polarizations>
+			<AntennaPointing>Right</AntennaPointing>
+			<BeamID>W3</BeamID>
+			<RSP_Path_Number>137</RSP_Path_Number>
+			<RSP_Frame_Number>500</RSP_Frame_Number>
+		</SourceDataAcquisitionParameters>
+		<OrbitInformation>
+			<PassDirection>Ascending</PassDirection>
+			<OrbitDataSource>Precise</OrbitDataSource>
+		</OrbitInformation>
+		<SourceProcParam>
+			<ProcessingFacility>EICS</ProcessingFacility>
+			<ProcessingDate>2022-08-12T07:31:25Z</ProcessingDate>
+			<SoftwareVersion>000.000 </SoftwareVersion>
+			<ProductID>ALOS2437590500-220630_WWDR1.1__A</ProductID>
+			<ProductLevel>SLC</ProductLevel>
+			<AzimuthNumberOfLooks>1</AzimuthNumberOfLooks>
+			<RangeNumberOfLooks>1</RangeNumberOfLooks>
+		</SourceProcParam>
+		<SourceDataImageAttributes>
+			<SourceDataGeometry type="WKT">Polygon ((121.732262 27.339137, 122.316740 24.313445, 125.775968 24.879538, 125.285874 27.889129, 121.732262 27.339137))</SourceDataGeometry>
+			<AzimuthPixelSpacing units="m">24.993</AzimuthPixelSpacing>
+			<RangePixelSpacing units="m">4.291</RangePixelSpacing>
+			<AzimuthResolution units="m">25.3</AzimuthResolution>
+			<RangeResolution units="m">13.3</RangeResolution>
+			<IncAngleNearRange units="deg">45.153</IncAngleNearRange>
+			<IncAngleFarRange units="deg">60.590</IncAngleFarRange>
+		</SourceDataImageAttributes>
+		<PerformanceIndicators pol="HH">
+			<NoiseEquivalentIntensity type="Sigma0" units="dB">
+				<Estimates type="min">-30</Estimates>
+			</NoiseEquivalentIntensity>
+		</PerformanceIndicators>
+		<PerformanceIndicators pol="HV">
+			<NoiseEquivalentIntensity type="Sigma0" units="dB">
+				<Estimates type="min">-32.5</Estimates>
+			</NoiseEquivalentIntensity>
+		</PerformanceIndicators>
+	</SourceAttributes>
+	<CARD4LProductAttributes>
+		<DataAccess>
+			<ProcessingFacility>JAXA/EORC</ProcessingFacility>
+			<ProcessingTime>2022-08-12T17:21:22.312338Z</ProcessingTime>
+			<SoftwareVersion>EGAS-APR Ver.1.0.0</SoftwareVersion>
+			<Repository type="URL">https://gportal.jaxa.jp/gpr/?lang=en</Repository>
+		</DataAccess>
+		<ProductSampleSpacing>
+			<ProductColumnSpacing units="m">25.0</ProductColumnSpacing>
+			<ProductRowSpacing units="m">25.0</ProductRowSpacing>
+		</ProductSampleSpacing>
+		<Filtering>
+			<FilterApplied>FALSE</FilterApplied>
+		</Filtering>
+		<ProductBoundingBox Corner="UL">
+			<Northing units="m">3087000.000000</Northing>
+			<Easting units="m">374625.000000</Easting>
+		</ProductBoundingBox>
+		<ProductBoundingBox Corner="LR">
+			<Northing units="m">2689125.000000</Northing>
+			<Easting units="m">780450.000000</Easting>
+		</ProductBoundingBox>
+		<ProductGeographicalExtent type="WKT" order="longitude latitude">Polygon ((121.726070 27.902011, 121.764426 24.310179, 125.762836 24.290071, 125.848492 27.878456, 121.726070 27.902011))</ProductGeographicalExtent>
+		<SceneCenterLatitude>26.109578</SceneCenterLatitude>
+		<SceneCenterLongitude>123.775605</SceneCenterLongitude>
+		<SceneCornerLatitude order="UL, LL, UR, LR" units="deg">27.902011,24.310179,27.878456,24.290071</SceneCornerLatitude>
+		<SceneCornerLongitude order="UL, LL, UR, LR" units="deg">121.726070,121.764426,125.848492,125.762836</SceneCornerLongitude>
+		<ProductImageSize>
+			<NumberLines>16234</NumberLines>
+			<NumPixelsPerLine>15916</NumPixelsPerLine>
+		</ProductImageSize>
+		<PixelCoordinateConvention>pixel ULC</PixelCoordinateConvention>
+		<CoordinateReferenceSystem type="EPSG">32651</CoordinateReferenceSystem>
+		<CoordinateReferenceSystem type="WKT">PROJCS[WGS 84 / UTM zone 51N,GEOGCS[WGS 84,DATUM[WGS_1984,SPHEROID[WGS 84,6378137,298.257223563,AUTHORITY[EPSG,7030]],AUTHORITY[EPSG,6326]],PRIMEM[Greenwich,0,AUTHORITY[EPSG,8901]],UNIT[degree,0.0174532925199433,AUTHORITY[EPSG,9122]],AUTHORITY[EPSG,4326]],PROJECTION[Transverse_Mercator],PARAMETER[latitude_of_origin,0],PARAMETER[central_meridian,123],PARAMETER[scale_factor,0.9996],PARAMETER[false_easting,500000],PARAMETER[false_northing,0],UNIT[metre,1,AUTHORITY[EPSG,9001]],AXIS[Easting,EAST],AXIS[Northing,NORTH],AUTHORITY[EPSG,32651]]</CoordinateReferenceSystem>
+		<PerPixelMetadata>
+			<DataMask>
+				<FileName>ALOS2437590500-220630_WWDR2.2GUA_MSK.tif</FileName>
+				<SampleType>Mask</SampleType>
+				<DataFormat>Cloud Optimized GeoTIFF</DataFormat>
+				<DataType>Byte</DataType>
+				<BitsPerSample>8</BitsPerSample>
+				<ByteOrder/>
+				<BitValues>
+					<NoData>0</NoData>
+					<ValidData>1</ValidData>
+					<Layover>2</Layover>
+					<Shadow>3</Shadow>
+					<OceanWater>4</OceanWater>
+					<InvalidData>5</InvalidData>
+				</BitValues>
+			</DataMask>
+			<LocalIncAngle>
+				<FileName>ALOS2437590500-220630_WWDR2.2GUA_LIN.tif</FileName>
+				<SampleType units="deg">Angle</SampleType>
+				<DataFormat>Cloud Optimized GeoTIFF</DataFormat>
+				<DataType>UINT</DataType>
+				<BitsPerSample>16</BitsPerSample>
+				<ByteOrder>Little Endian</ByteOrder>
+				<ConversionEq units="deg">0.01*DN</ConversionEq>
+			</LocalIncAngle>
+		</PerPixelMetadata>
+		<BackscatterMeasurementData>
+			<BackscatterMeasurement>Gamma-0</BackscatterMeasurement>
+			<BackscatterConvention>Linear Amplitude</BackscatterConvention>
+			<BackscatterConversionEq units="dB">10*log10(DN^2)-83.0</BackscatterConversionEq>
+			<Polarization>HH</Polarization>
+			<FileName>ALOS2437590500-220630_WWDR2.2GUA_HH_SLP.tif</FileName>
+			<DataFormat>Cloud Optimized GeoTIFF</DataFormat>
+			<DataType>UINT</DataType>
+			<BitsPerSample>16</BitsPerSample>
+			<ByteOrder>Little Endian</ByteOrder>
+		</BackscatterMeasurementData>
+		<BackscatterMeasurementData>
+			<BackscatterMeasurement>Gamma-0</BackscatterMeasurement>
+			<BackscatterConvention>Linear Amplitude</BackscatterConvention>
+			<BackscatterConversionEq units="dB">10*log10(DN^2)-83.0</BackscatterConversionEq>
+			<Polarization>HV</Polarization>
+			<FileName>ALOS2437590500-220630_WWDR2.2GUA_HV_SLP.tif</FileName>
+			<DataFormat>Cloud Optimized GeoTIFF</DataFormat>
+			<DataType>UINT</DataType>
+			<BitsPerSample>16</BitsPerSample>
+			<ByteOrder>Little Endian</ByteOrder>
+		</BackscatterMeasurementData>
+		<NoiseRemoval>
+			<NoiseRemovalApplied>FALSE</NoiseRemovalApplied>
+		</NoiseRemoval>
+		<RadiometricTerrainCorrections>
+			<RTCAlgorithm type="DOI">https://doi.org/10.1109/TGRS.2011.2120616</RTCAlgorithm>
+		</RadiometricTerrainCorrections>
+		<GeometricCorrections>
+			<DigitalElevationModel dem="Surface">
+				<DEMReference type="URL">https://www.eorc.jaxa.jp/ALOS/en/dataset/aw3d30/aw3d30_e.htm</DEMReference>
+				<EGMReference type="DOI">https://doi.org/10.1029/2011JB008916</EGMReference>
+			</DigitalElevationModel>
+			<GeoCorrAccuracy>
+				<NorthernSTDev units="m">N/A</NorthernSTDev>
+				<EasternSTDev units="m">N/A</EasternSTDev>
+				<NorthernBias units="m">N/A</NorthernBias>
+				<EasternBias units="m">N/A</EasternBias>
+			</GeoCorrAccuracy>
+			<GriddingConvention type="Description">Scene Upper Left Corner coordinates (Northing and Easting) are multiples of 25.0 m</GriddingConvention>
+			<IonosphericDelayCorrection>
+				<IonosphericDelayCorrectionApplied>FALSE</IonosphericDelayCorrectionApplied>
+			</IonosphericDelayCorrection>
+		</GeometricCorrections>
+	</CARD4LProductAttributes>
+</Product>

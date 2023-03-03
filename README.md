@@ -32,10 +32,12 @@ Description of the command line functions
 
 <!-- markdownlint-disable MD013 -->
 ```shell
-stac palsar2-scansar create-item source destination
+stac palsar2-scansar create-collection <destination/>
+
+stac palsar2-scansar create-item <source.xml> <destination/>
 stac palsar2-scansar create-item \
-https://jaxaalos2.s3.us-west-2.amazonaws.com/palsar2/L2.2/For_STAC/ALOS2397743750-211004_WBDR2.2GUD \
-ALOS2397743750-211004_WBDR2.2GUD.json 
+https://jaxaalos2.s3.us-west-2.amazonaws.com/palsar2/L2.2/For_STAC/ALOS2397743750-211004_WBDR2.2GUD_summary.xml \
+examples/
 ```
 <!-- markdownlint-enable MD013 -->
 

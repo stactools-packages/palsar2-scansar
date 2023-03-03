@@ -1,0 +1,72 @@
+{
+  "type": "Feature",
+  "stac_version": "1.0.0",
+  "id": "ALOS2437590500-220630_WWDR2.2GUA",
+  "properties": {
+    "proj:epsg": 32651,
+    "proj:bbox": [
+      374612.5,
+      2689112.5,
+      780462.5,
+      3087012.5
+    ],
+    "proj:shape": [
+      16234,
+      15916
+    ],
+    "datetime": "2022-06-30T15:58:28.260000Z"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          121.732262,
+          27.339137
+        ],
+        [
+          122.31674,
+          24.313445
+        ],
+        [
+          125.775968,
+          24.879538
+        ],
+        [
+          125.285874,
+          27.889129
+        ],
+        [
+          121.732262,
+          27.339137
+        ]
+      ]
+    ]
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "/workspaces/palsar2-scansar/examples/ALOS2437590500-220630_WWDR2.2GUA.json",
+      "type": "application/json"
+    }
+  ],
+  "assets": {
+    "image": {
+      "href": "tests/data-files/ALOS2437590500-220630_WWDR2.2GUA_summary.xml",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "A dummy STAC Item COG",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "bbox": [
+    121.732262,
+    24.313445,
+    125.775968,
+    27.889129
+  ],
+  "stac_extensions": [
+    "https://stac-extensions.github.io/projection/v1.0.0/schema.json"
+  ]
+}

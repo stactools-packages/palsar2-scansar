@@ -90,10 +90,10 @@ def create_item(
 
     See `Item<https://pystac.readthedocs.io/en/latest/api.html#item>`_.
     Example:
-        ALOS2397743750-211004_WBDR2.2GUD
+        ALOS2397743750-211004_WBDR2.2GUD_summary.xml
 
     Args:
-        granule_href (str): The HREF pointing to a granule ID
+        granule_href (str): The HREF pointing to a granule summary xml
 
     Returns:
         Item: STAC Item object
@@ -104,9 +104,10 @@ def create_item(
         **kwargs,
     )
 
+    granule_id = granule_href.replace("_summary.xml", "")
     product_metadata = ProductMetadata(granule_href, metalinks.manifest)
 
-    asset_href = f"{granule_href}_HH_SLP.tif"
+    asset_href = f"{granule_id}_HH_SLP.tif"
     with rasterio.open(asset_href) as dataset:
         bbox = list(dataset.bounds)
         # geometry = mapping(box(*bbox))
@@ -114,7 +115,7 @@ def create_item(
         # shape = dataset.shape
 
         item = Item(
-            id=os.path.basename(granule_href),
+            id=os.path.basename(granule_id),
             properties={},
             geometry=product_metadata.geometry,
             bbox=product_metadata.bbox,

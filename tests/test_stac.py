@@ -18,10 +18,12 @@ def test_create_collection() -> None:
 def test_create_item() -> None:
     # Write tests for each for the creation of STAC Items
     # Create the STAC Item...
-    item = stac.create_item("tests/data-files/ALOS2412212550-220110_WBSR2.2GUD")
+    item = stac.create_item(
+        "tests/data-files/ALOS2437590500-220630_WWDR2.2GUA_summary.xml"
+    )
 
     # Check that it has some required attributes
-    assert item.id == "ALOS2412212550-220110_WBSR2.2GUD"
+    assert item.id == "ALOS2437590500-220630_WWDR2.2GUA"
     # self.assertEqual(item.other_attr...
 
     # Validate
