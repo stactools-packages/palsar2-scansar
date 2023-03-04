@@ -51,13 +51,53 @@
     }
   ],
   "assets": {
-    "image": {
-      "href": "tests/data-files/ALOS2437590500-220630_WWDR2.2GUA_summary.xml",
+    "HH_SLP": {
+      "href": "tests/data-files/ALOS2437590500-220630_WWDR2.2GUA_HH_SLP.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "A dummy STAC Item COG",
-      "roles": [
-        "data"
+      "title": "HH",
+      "description": "HH polarization backscattering coefficient, 16-bit DN.",
+      "role": "data"
+    },
+    "HV_SLP": {
+      "href": "tests/data-files/ALOS2437590500-220630_WWDR2.2GUA_HV_SLP.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "HV",
+      "description": "HV polarization backscattering coefficient, 16-bit DN.",
+      "role": "data"
+    },
+    "MSK": {
+      "href": "tests/data-files/ALOS2437590500-220630_WWDR2.2GUA_MSK.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "mask",
+      "description": "Quality Mask",
+      "role": [
+        "data",
+        "data-mask"
       ]
+    },
+    "LIN": {
+      "href": "tests/data-files/ALOS2437590500-220630_WWDR2.2GUA_LIN.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "linci",
+      "description": "Local incidence angle (degrees).",
+      "role": [
+        "data",
+        "local-incidence-angle"
+      ]
+    },
+    "summary": {
+      "href": "tests/data-files/ALOS2437590500-220630_WWDR2.2GUA_summary.xml",
+      "type": "application/xml",
+      "title": "summary",
+      "description": "CARD4L Metadata",
+      "role": "metadata"
+    },
+    "kml": {
+      "href": "tests/data-files/ALOS2437590500-220630_WWDR2.2GUA.kml",
+      "type": "application/xml",
+      "title": "kml",
+      "description": "",
+      "role": "overview"
     }
   },
   "bbox": [
@@ -67,7 +107,6 @@
     27.889129
   ],
   "stac_extensions": [
-    "https://stac-extensions.github.io/projection/v1.0.0/schema.json",
-    "https://stac-extensions.github.io/sar/v1.0.0/schema.json"
+    "https://stac-extensions.github.io/projection/v1.0.0/schema.json"
   ]
 }

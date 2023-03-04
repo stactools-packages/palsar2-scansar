@@ -4,16 +4,7 @@ from datetime import datetime, timezone
 from typing import Any
 
 import rasterio
-from pystac import (
-    Asset,
-    Collection,
-    Extent,
-    Item,
-    MediaType,
-    SpatialExtent,
-    Summaries,
-    TemporalExtent,
-)
+from pystac import Collection, Extent, Item, SpatialExtent, Summaries, TemporalExtent
 
 # from pystac.extensions.eo import EOExtension
 from pystac.extensions.item_assets import ItemAssetsExtension
@@ -153,17 +144,17 @@ def create_item(
     # sar = SarExtension.ext(item, add_if_missing=True)
 
     # TODO: get list of assets from metadata
-    # assets = ["HH_SLP","HV_SLP","MSK", "LIN", "summary", "kml"]
+    assets_dict = {
+        "HH_SLP": f"{granule_id}_HH_SLP.tif",
+        "HV_SLP": f"{granule_id}_HV_SLP.tif",
+        "MSK": f"{granule_id}_MSK.tif",
+        "LIN": f"{granule_id}_LIN.tif",
+        "summary": granule_href,
+        "kml": f"{granule_id}.kml",
+    }
 
     # Add an asset to the item
-    item.add_asset(
-        "image",
-        Asset(
-            href=granule_href,
-            media_type=MediaType.COG,
-            roles=["data"],
-            title="A dummy STAC Item COG",
-        ),
-    )
+    for key, value in assets_dict.items():
+        item.add_asset(key, c.SCANSAR_ASSETS.get(key).create_asset(value))
 
     return item
