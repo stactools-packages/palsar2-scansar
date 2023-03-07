@@ -3,6 +3,7 @@ from typing import Any, Dict, List, Tuple, TypeVar
 
 import pystac
 from pystac.extensions.sar import Polarization, SarExtension
+from pystac.extensions.sat import OrbitState, SatExtension
 from pystac.utils import str_to_datetime
 from shapely.geometry import mapping
 from shapely.wkt import loads
@@ -148,26 +149,26 @@ def fill_sar_properties(sar_ext: SarExtension[T], manifest: XmlElement) -> None:
     ]
     sar_ext.product_type = c.SCANSAR_SAR["product_type"][0]
 
+    # TODO: Decide what additional SAR properties to include
     # Properties depending on mode and resolution
-    # product_data = product_data_summary[sar_ext.instrument_mode][resolution]
-
-    # sar_ext.resolution_range = product_data.resolution_rng
-    # sar_ext.resolution_azimuth = product_data.resolution_azi
-    # sar_ext.pixel_spacing_range = product_data.pixel_spacing_rng
-    # sar_ext.pixel_spacing_azimuth = product_data.pixel_spacing_azi
-    # sar_ext.looks_range = product_data.no_looks_rng
-    # sar_ext.looks_azimuth = product_data.no_looks_azi
-    # sar_ext.looks_equivalent_number = product_data.enl
-
-    #  sar.looks_range = c.SCANSAR_SAR["looks_range"]
-    # sar.product_type = c.SCANSAR_SAR["product_type"]
+    # sar.looks_range = c.SCANSAR_SAR["looks_range"]
     # sar.looks_azimuth = c.SCANSAR_SAR["looks_azimuth"]
     # sar.polarizations = c.SCANSAR_SAR["polarizations"]
-    # sar.frequency_band =
-    # sar.instrument_mode =
-    # sar.center_frequency =
     # sar.resolution_range = c.SCANSAR_SAR["resolution_range"]
     # sar.resolution_azimuth = c.SCANSAR_SAR["resolution_azimuth"]
     # sar.pixel_spacing_range = c.SCANSAR_SAR["pixel_spacing_range"]
     # sar.pixel_spacing_azimuth = c.SCANSAR_SAR["pixel_spacing_azimuth"]
     # sar.looks_equivalent_number = c.SCANSAR_SAR["looks_equivalent_number"]
+
+
+def fill_sat_properties(sat_ext: SatExtension[T], manifest: XmlElement) -> None:
+    """Fills the properties for SAR.
+    Based on the sar Extension.py
+    Args:
+        sar_ext (SarExtension): The extension to be populated.
+        manifest (XmlElement): manifest.safe file parsed into an XmlElement
+    """
+    # Fixed properties
+    orbit_state = manifest.find_text_or_throw(".//PassDirection", ProductMetadataError)
+    if orbit_state:
+        sat_ext.orbit_state = OrbitState(orbit_state.lower())

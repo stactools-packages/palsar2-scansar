@@ -5,6 +5,7 @@ import pystac
 from pystac import Link, Provider
 from pystac import ProviderRole as PR
 from pystac.extensions import sar
+from pystac.extensions.eo import Band
 from pystac.extensions.item_assets import AssetDefinition
 from pystac.extensions.raster import DataType
 from pystac.utils import str_to_datetime
@@ -69,6 +70,17 @@ SCANSAR_SAR: Dict[str, Any] = {
     "observation_direction": [sar.ObservationDirection.RIGHT],
     "pixel_spacing_azimuth": [325.003],
     "looks_equivalent_number": [2.7],
+}
+
+SCANSAR_POLARIZATIONS = {
+    "HH_SLP": Band.create(
+        name="HH",
+        description="HH band: horizontal transmit and horizontal receive",
+    ),
+    "HV_SLP": Band.create(
+        name="HV",
+        description="HV band: horizontal transmit and vertical receive",
+    ),
 }
 
 SCANSAR_ASSETS: Dict[str, AssetDefinition] = {

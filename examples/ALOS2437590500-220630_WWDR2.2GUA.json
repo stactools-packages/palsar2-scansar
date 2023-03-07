@@ -23,6 +23,7 @@
       "HV"
     ],
     "sar:product_type": "GRD",
+    "sat:orbit_state": "ascending",
     "datetime": "2022-06-30T15:58:28.260000Z"
   },
   "geometry": {
@@ -65,14 +66,26 @@
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "HH",
       "description": "HH polarization backscattering coefficient, 16-bit DN.",
-      "role": "data"
+      "role": "data",
+      "eo:bands": [
+        {
+          "name": "HH",
+          "description": "HH band: horizontal transmit and horizontal receive"
+        }
+      ]
     },
     "HV_SLP": {
       "href": "ALOS2437590500-220630_WWDR2.2GUA_HV_SLP.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "HV",
       "description": "HV polarization backscattering coefficient, 16-bit DN.",
-      "role": "data"
+      "role": "data",
+      "eo:bands": [
+        {
+          "name": "HV",
+          "description": "HV band: horizontal transmit and vertical receive"
+        }
+      ]
     },
     "MSK": {
       "href": "ALOS2437590500-220630_WWDR2.2GUA_MSK.tif",
@@ -117,6 +130,7 @@
   ],
   "stac_extensions": [
     "https://stac-extensions.github.io/projection/v1.0.0/schema.json",
-    "https://stac-extensions.github.io/sar/v1.0.0/schema.json"
+    "https://stac-extensions.github.io/sar/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/sat/v1.0.0/schema.json"
   ]
 }

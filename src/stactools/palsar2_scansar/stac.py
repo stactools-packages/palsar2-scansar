@@ -5,16 +5,21 @@ from typing import Any
 
 import rasterio
 from pystac import Collection, Extent, Item, SpatialExtent, Summaries, TemporalExtent
-
-# from pystac.extensions.eo import EOExtension
+from pystac.extensions.eo import EOExtension
 from pystac.extensions.item_assets import ItemAssetsExtension
 from pystac.extensions.projection import ProjectionExtension
 from pystac.extensions.raster import RasterExtension
 from pystac.extensions.sar import SarExtension
+from pystac.extensions.sat import SatExtension
 
 from stactools.palsar2_scansar import constants as c
 
-from .card4l_metadata import MetadataLinks, ProductMetadata, fill_sar_properties
+from .card4l_metadata import (
+    MetadataLinks,
+    ProductMetadata,
+    fill_sar_properties,
+    fill_sat_properties,
+)
 
 # from pystac.extensions.sat import SatExtension
 
@@ -59,8 +64,8 @@ def create_collection() -> Collection:
             ProjectionExtension.get_schema_uri(),
             RasterExtension.get_schema_uri(),
             SarExtension.get_schema_uri(),
-            # SatExtension.get_schema_uri(),
-            # EOExtension.get_schema_uri(),
+            SatExtension.get_schema_uri(),
+            EOExtension.get_schema_uri(),
         ],
     )
 
@@ -157,10 +162,21 @@ def create_item(
     # Keeps the asset hrefs relative
     for key, value in assets_dict.items():
         if (asset_def := c.SCANSAR_ASSETS.get(key)) is not None:
-            item.add_asset(key, asset_def.create_asset(os.path.basename(value)))
+            asset = asset_def.create_asset(os.path.basename(value))
+
+            if (band := c.SCANSAR_POLARIZATIONS.get(key)) is not None:
+                asset_eo = EOExtension.ext(asset)
+                asset_eo.bands = [band]
+            item.add_asset(key, asset)
 
     # SAR extension
     sar = SarExtension.ext(item, add_if_missing=True)
     fill_sar_properties(sar, metalinks.manifest)
+
+    # SAT extension
+    sat = SatExtension.ext(item, add_if_missing=True)
+    fill_sat_properties(sat, metalinks.manifest)
+
+    # eo extension
 
     return item
