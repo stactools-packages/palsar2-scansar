@@ -32,7 +32,9 @@
     "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json",
     "https://stac-extensions.github.io/projection/v1.0.0/schema.json",
     "https://stac-extensions.github.io/raster/v1.1.0/schema.json",
-    "https://stac-extensions.github.io/sar/v1.0.0/schema.json"
+    "https://stac-extensions.github.io/sar/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/sat/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/eo/v1.0.0/schema.json"
   ],
   "item_assets": {
     "HH_SLP": {
@@ -84,16 +86,16 @@
       "bbox": [
         [
           -180.0,
-          90.0,
+          -56,
           180.0,
-          -90.0
+          85.0
         ]
       ]
     },
     "temporal": {
       "interval": [
         [
-          "2023-03-03T01:08:21.719462Z",
+          "2014-08-04T00:00:00Z",
           null
         ]
       ]
@@ -139,7 +141,8 @@
       "L"
     ],
     "sar:instrument_mode": [
-      "WBD"
+      "WBD",
+      "WBS"
     ],
     "sar:center_frequency": [
       1.2575

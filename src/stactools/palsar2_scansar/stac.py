@@ -1,10 +1,9 @@
 import logging
 import os
-from datetime import datetime, timezone
 from typing import Any
 
 import rasterio
-from pystac import Collection, Extent, Item, SpatialExtent, Summaries, TemporalExtent
+from pystac import Collection, Item, Summaries
 from pystac.extensions.eo import EOExtension
 from pystac.extensions.item_assets import ItemAssetsExtension
 from pystac.extensions.projection import ProjectionExtension
@@ -40,14 +39,6 @@ def create_collection() -> Collection:
         Collection: STAC Collection object
     """
 
-    # Time must be in UTC
-    demo_time = datetime.now(tz=timezone.utc)
-
-    extent = Extent(
-        SpatialExtent([[-180.0, 90.0, 180.0, -90.0]]),
-        TemporalExtent([[demo_time, None]]),
-    )
-
     summary_dict = {
         "platform": c.SCANSAR_PALSAR_PLATFORMS,
     }
@@ -57,7 +48,7 @@ def create_collection() -> Collection:
         title="ALOS-2 PALSAR-2 ScanSAR",
         description=c.SCANSAR_DESCRIPTION,
         providers=c.SCANSAR_PALSAR_PROVIDERS,
-        extent=extent,
+        extent=c.SCANSAR_EXTENT,
         summaries=Summaries(summary_dict),
         stac_extensions=[
             ItemAssetsExtension.get_schema_uri(),

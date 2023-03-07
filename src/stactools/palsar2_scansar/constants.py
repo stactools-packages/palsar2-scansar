@@ -2,8 +2,9 @@ from datetime import datetime
 from typing import Any, Dict, Optional
 
 import pystac
-from pystac import Link, Provider
+from pystac import Extent, Link, Provider
 from pystac import ProviderRole as PR
+from pystac import SpatialExtent, TemporalExtent
 from pystac.extensions import sar
 from pystac.extensions.eo import Band
 from pystac.extensions.item_assets import AssetDefinition
@@ -11,12 +12,13 @@ from pystac.extensions.raster import DataType
 from pystac.utils import str_to_datetime
 
 # Time must be in UTC
-# TODO: update to match bucket
-SCANSAR_COLLECTION_START: Optional[datetime] = str_to_datetime("2015-01-01T00:00:00Z")
-SCANSAR_TEMPORAL_EXTENT = [SCANSAR_COLLECTION_START, None]
+SCANSAR_COLLECTION_START: Optional[datetime] = str_to_datetime("2014-08-04T00:00:00Z")
+SCANSAR_TEMPORAL_EXTENT = TemporalExtent([[SCANSAR_COLLECTION_START, None]])
 
 # TODO: update to match bucket
-SCANSAR_SPATIAL_EXTENT = [[-180.0, -56, 180.0, 85.0]]
+SCANSAR_SPATIAL_EXTENT = SpatialExtent([-180.0, -56, 180.0, 85.0])
+
+SCANSAR_EXTENT = Extent(SCANSAR_SPATIAL_EXTENT, SCANSAR_TEMPORAL_EXTENT)
 
 SCANSAR_PALSAR_PROVIDERS = [
     Provider(
