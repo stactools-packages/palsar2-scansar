@@ -14,6 +14,15 @@
       16234,
       15916
     ],
+    "sar:frequency_band": "L",
+    "sar:center_frequency": 1.2575,
+    "sar:observation_direction": "right",
+    "sar:instrument_mode": "WWD",
+    "sar:polarizations": [
+      "HH",
+      "HV"
+    ],
+    "sar:product_type": "GRD",
     "datetime": "2022-06-30T15:58:28.260000Z"
   },
   "geometry": {
@@ -52,21 +61,21 @@
   ],
   "assets": {
     "HH_SLP": {
-      "href": "tests/data-files/ALOS2437590500-220630_WWDR2.2GUA_HH_SLP.tif",
+      "href": "ALOS2437590500-220630_WWDR2.2GUA_HH_SLP.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "HH",
       "description": "HH polarization backscattering coefficient, 16-bit DN.",
       "role": "data"
     },
     "HV_SLP": {
-      "href": "tests/data-files/ALOS2437590500-220630_WWDR2.2GUA_HV_SLP.tif",
+      "href": "ALOS2437590500-220630_WWDR2.2GUA_HV_SLP.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "HV",
       "description": "HV polarization backscattering coefficient, 16-bit DN.",
       "role": "data"
     },
     "MSK": {
-      "href": "tests/data-files/ALOS2437590500-220630_WWDR2.2GUA_MSK.tif",
+      "href": "ALOS2437590500-220630_WWDR2.2GUA_MSK.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "mask",
       "description": "Quality Mask",
@@ -76,7 +85,7 @@
       ]
     },
     "LIN": {
-      "href": "tests/data-files/ALOS2437590500-220630_WWDR2.2GUA_LIN.tif",
+      "href": "ALOS2437590500-220630_WWDR2.2GUA_LIN.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "linci",
       "description": "Local incidence angle (degrees).",
@@ -86,14 +95,14 @@
       ]
     },
     "summary": {
-      "href": "tests/data-files/ALOS2437590500-220630_WWDR2.2GUA_summary.xml",
+      "href": "ALOS2437590500-220630_WWDR2.2GUA_summary.xml",
       "type": "application/xml",
       "title": "summary",
       "description": "CARD4L Metadata",
       "role": "metadata"
     },
     "kml": {
-      "href": "tests/data-files/ALOS2437590500-220630_WWDR2.2GUA.kml",
+      "href": "ALOS2437590500-220630_WWDR2.2GUA.kml",
       "type": "application/xml",
       "title": "kml",
       "description": "",
@@ -107,6 +116,7 @@
     27.889129
   ],
   "stac_extensions": [
-    "https://stac-extensions.github.io/projection/v1.0.0/schema.json"
+    "https://stac-extensions.github.io/projection/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/sar/v1.0.0/schema.json"
   ]
 }

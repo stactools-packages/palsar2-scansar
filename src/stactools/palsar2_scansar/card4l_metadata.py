@@ -1,10 +1,16 @@
 from datetime import datetime
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict, List, Tuple, TypeVar
 
+import pystac
+from pystac.extensions.sar import Polarization, SarExtension
 from pystac.utils import str_to_datetime
 from shapely.geometry import mapping
 from shapely.wkt import loads
 from stactools.core.io.xml import XmlElement
+
+from stactools.palsar2_scansar import constants as c
+
+T = TypeVar("T", pystac.Item, pystac.Asset)
 
 
 class MetadataLinks:
@@ -114,3 +120,54 @@ class ProductMetadata:
             ".//CoordinateReferenceSystem[@type='EPSG']", ProductMetadataError
         )
         return epsg
+
+
+def fill_sar_properties(sar_ext: SarExtension[T], manifest: XmlElement) -> None:
+    """Fills the properties for SAR.
+    Based on the sar Extension.py
+    Args:
+        sar_ext (SarExtension): The extension to be populated.
+        manifest (XmlElement): manifest.safe file parsed into an XmlElement
+    """
+    # Fixed properties
+    sar_ext.frequency_band = c.SCANSAR_SAR["frequency_band"][0]
+    sar_ext.center_frequency = c.SCANSAR_SAR["center_frequency"][0]
+    sar_ext.observation_direction = c.SCANSAR_SAR["observation_direction"][0]
+
+    # Read properties
+    instrument_mode = manifest.find_text_or_throw(
+        ".//ObservationMode", ProductMetadataError
+    )
+    if instrument_mode:
+        sar_ext.instrument_mode = instrument_mode
+    sar_ext.polarizations = [
+        Polarization(x)
+        for x in manifest.find_text_or_throw(
+            ".//Polarizations", ProductMetadataError
+        ).split(" ")
+    ]
+    sar_ext.product_type = c.SCANSAR_SAR["product_type"][0]
+
+    # Properties depending on mode and resolution
+    # product_data = product_data_summary[sar_ext.instrument_mode][resolution]
+
+    # sar_ext.resolution_range = product_data.resolution_rng
+    # sar_ext.resolution_azimuth = product_data.resolution_azi
+    # sar_ext.pixel_spacing_range = product_data.pixel_spacing_rng
+    # sar_ext.pixel_spacing_azimuth = product_data.pixel_spacing_azi
+    # sar_ext.looks_range = product_data.no_looks_rng
+    # sar_ext.looks_azimuth = product_data.no_looks_azi
+    # sar_ext.looks_equivalent_number = product_data.enl
+
+    #  sar.looks_range = c.SCANSAR_SAR["looks_range"]
+    # sar.product_type = c.SCANSAR_SAR["product_type"]
+    # sar.looks_azimuth = c.SCANSAR_SAR["looks_azimuth"]
+    # sar.polarizations = c.SCANSAR_SAR["polarizations"]
+    # sar.frequency_band =
+    # sar.instrument_mode =
+    # sar.center_frequency =
+    # sar.resolution_range = c.SCANSAR_SAR["resolution_range"]
+    # sar.resolution_azimuth = c.SCANSAR_SAR["resolution_azimuth"]
+    # sar.pixel_spacing_range = c.SCANSAR_SAR["pixel_spacing_range"]
+    # sar.pixel_spacing_azimuth = c.SCANSAR_SAR["pixel_spacing_azimuth"]
+    # sar.looks_equivalent_number = c.SCANSAR_SAR["looks_equivalent_number"]

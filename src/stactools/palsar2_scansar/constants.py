@@ -61,16 +61,17 @@ SCANSAR_SAR: Dict[str, Any] = {
     "looks_azimuth": [1],
     "polarizations": [sar.Polarization.HH, sar.Polarization.HV],
     "frequency_band": [sar.FrequencyBand.L],
-    "instrument_mode": ["WBD"],
+    "instrument_mode": ["WBD", "WBS"],
     "center_frequency": [1.2575],
     "resolution_range": [19],
     "resolution_azimuth": [25.9],
     "pixel_spacing_range": [8.583],
+    "observation_direction": [sar.ObservationDirection.RIGHT],
     "pixel_spacing_azimuth": [325.003],
     "looks_equivalent_number": [2.7],
 }
 
-SCANSAR_ASSETS = {
+SCANSAR_ASSETS: Dict[str, AssetDefinition] = {
     "HH_SLP": AssetDefinition(
         {
             "title": "HH",

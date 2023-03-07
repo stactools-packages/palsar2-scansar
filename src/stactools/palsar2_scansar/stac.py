@@ -14,7 +14,7 @@ from pystac.extensions.sar import SarExtension
 
 from stactools.palsar2_scansar import constants as c
 
-from .card4l_metadata import MetadataLinks, ProductMetadata
+from .card4l_metadata import MetadataLinks, ProductMetadata, fill_sar_properties
 
 # from pystac.extensions.sat import SatExtension
 
@@ -154,7 +154,13 @@ def create_item(
     }
 
     # Add an asset to the item
+    # Keeps the asset hrefs relative
     for key, value in assets_dict.items():
-        item.add_asset(key, c.SCANSAR_ASSETS.get(key).create_asset(value))
+        if (asset_def := c.SCANSAR_ASSETS.get(key)) is not None:
+            item.add_asset(key, asset_def.create_asset(os.path.basename(value)))
+
+    # SAR extension
+    sar = SarExtension.ext(item, add_if_missing=True)
+    fill_sar_properties(sar, metalinks.manifest)
 
     return item
