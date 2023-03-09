@@ -5,12 +5,10 @@
 - Name: palsar2-scansar
 - Package: `stactools.palsar2_scansar`
 - [stactools-palsar2-scansar on PyPI](https://pypi.org/project/stactools-palsar2-scansar/)
-- Owner: @githubusername
-- [Dataset homepage](http://example.com)
+- Owner: @wildintellect
+- [Dataset homepage](https://www.eorc.jaxa.jp/ALOS/en/dataset/palsar2_l22_e.htm)
 - STAC extensions used:
   - [proj](https://github.com/stac-extensions/projection/)
-- Extra fields:
-  - `palsar2-scansar:custom`: A custom attribute
 - [Browse the example in human-readable form](https://radiantearth.github.io/stac-browser/#/external/raw.githubusercontent.com/stactools-packages/palsar2-scansar/main/examples/collection.json)
 
 A short description of the package and its usage.
