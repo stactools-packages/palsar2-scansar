@@ -6,7 +6,7 @@
   "links": [
     {
       "rel": "root",
-      "href": "/workspaces/palsar2-scansar/examples/palsar2-scansar.json",
+      "href": "./collection.json",
       "type": "application/json",
       "title": "ALOS-2 PALSAR-2 ScanSAR"
     },
@@ -23,8 +23,8 @@
       "type": "JAXA Terms of Use of Research Data"
     },
     {
-      "rel": "self",
-      "href": "/workspaces/palsar2-scansar/examples/palsar2-scansar.json",
+      "rel": "item",
+      "href": "./ALOS2437590500-220630_WWDR2.2GUA/ALOS2437590500-220630_WWDR2.2GUA.json",
       "type": "application/json"
     }
   ],

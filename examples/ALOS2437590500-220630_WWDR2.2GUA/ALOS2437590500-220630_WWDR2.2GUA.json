@@ -55,9 +55,22 @@
   },
   "links": [
     {
-      "rel": "self",
-      "href": "/workspaces/palsar2-scansar/examples/ALOS2437590500-220630_WWDR2.2GUA.json",
-      "type": "application/json"
+      "rel": "root",
+      "href": "../collection.json",
+      "type": "application/json",
+      "title": "ALOS-2 PALSAR-2 ScanSAR"
+    },
+    {
+      "rel": "collection",
+      "href": "../collection.json",
+      "type": "application/json",
+      "title": "ALOS-2 PALSAR-2 ScanSAR"
+    },
+    {
+      "rel": "parent",
+      "href": "../collection.json",
+      "type": "application/json",
+      "title": "ALOS-2 PALSAR-2 ScanSAR"
     }
   ],
   "assets": {
@@ -164,5 +177,6 @@
     "https://stac-extensions.github.io/projection/v1.0.0/schema.json",
     "https://stac-extensions.github.io/sar/v1.0.0/schema.json",
     "https://stac-extensions.github.io/sat/v1.0.0/schema.json"
-  ]
+  ],
+  "collection": "palsar2-scansar"
 }
