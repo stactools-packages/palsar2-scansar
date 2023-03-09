@@ -1,5 +1,5 @@
-import stactools.ephemeral
+import stactools.palsar2_scansar
 
 
 def test_version() -> None:
-    assert stactools.ephemeral.__version__ is not None
+    assert stactools.palsar2_scansar.__version__ is not None
