@@ -18,7 +18,7 @@ class CommandsTest(CliTestCase):
             # Run your custom create-collection command and validate
 
             # Example:
-            destination = os.path.join(tmp_dir, "palsar2-scansar.json")
+            destination = os.path.join(tmp_dir, "collection.json")
 
             result = self.run_command(f"palsar2-scansar create-collection {tmp_dir}")
 

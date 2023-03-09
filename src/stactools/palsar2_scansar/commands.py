@@ -32,7 +32,7 @@ def create_palsar2scansar_command(cli: Group) -> Command:
         Args:
             destination (str): An HREF for the Collection to be written to (i.e. folder)
         """
-        json_path = os.path.join(destination, "{}.json".format(collection_id))
+        json_path = os.path.join(destination, "collection.json")
         collection = stac.create_collection()
 
         collection.set_self_href(json_path)
