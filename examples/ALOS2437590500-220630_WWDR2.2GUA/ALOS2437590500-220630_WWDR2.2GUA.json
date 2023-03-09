@@ -58,19 +58,19 @@
       "rel": "root",
       "href": "../collection.json",
       "type": "application/json",
-      "title": "ALOS-2 PALSAR-2 ScanSAR"
+      "title": "PALSAR-2 ScanSAR NRB L2.2"
     },
     {
       "rel": "collection",
       "href": "../collection.json",
       "type": "application/json",
-      "title": "ALOS-2 PALSAR-2 ScanSAR"
+      "title": "PALSAR-2 ScanSAR NRB L2.2"
     },
     {
       "rel": "parent",
       "href": "../collection.json",
       "type": "application/json",
-      "title": "ALOS-2 PALSAR-2 ScanSAR"
+      "title": "PALSAR-2 ScanSAR NRB L2.2"
     }
   ],
   "assets": {

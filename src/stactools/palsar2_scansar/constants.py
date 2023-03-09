@@ -38,16 +38,16 @@ SCANSAR_REVISION = "E"
 
 SCANSAR_LINKS = [
     Link(
-        "documentation",
-        ("https://www.eorc.jaxa.jp/ALOS/en/dataset/palsar2_l22_e.htm"),
-        "application/pdf",
-        SCANSAR_DESCRIPTION,
+        rel="documentation",
+        target=("https://www.eorc.jaxa.jp/ALOS/en/dataset/palsar2_l22_e.htm"),
+        media_type="application/pdf",
+        title="PALSAR-2 ScanSAR NRB product description",
         extra_fields={"description": "Also includes data usage information"},
     ),
     Link(
-        "license",
-        "https://earth.jaxa.jp/policy/en.html",
-        "JAXA Terms of Use of Research Data",
+        rel="license",
+        target="https://earth.jaxa.jp/policy/en.html",
+        title="JAXA Terms of Use of Research Data",
     ),
 ]
 

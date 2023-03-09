@@ -45,7 +45,7 @@ def create_collection() -> Collection:
 
     collection = Collection(
         id="palsar2-scansar",
-        title="ALOS-2 PALSAR-2 ScanSAR",
+        title="PALSAR-2 ScanSAR NRB L2.2",
         description=c.SCANSAR_DESCRIPTION,
         providers=c.SCANSAR_PALSAR_PROVIDERS,
         extent=c.SCANSAR_EXTENT,
