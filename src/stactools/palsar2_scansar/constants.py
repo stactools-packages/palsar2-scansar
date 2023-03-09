@@ -129,8 +129,8 @@ SCANSAR_ASSETS: Dict[str, AssetDefinition] = {
     "kml": AssetDefinition(
         {
             "title": "kml",
-            "type": pystac.MediaType.XML,
-            "description": "",
+            "type": "application/vnd.google-earth.kml+xml",
+            "description": "Footprint Preview",
             "role": "overview",
         }
     ),

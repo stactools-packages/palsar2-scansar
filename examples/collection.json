@@ -75,8 +75,8 @@
     },
     "kml": {
       "title": "kml",
-      "type": "application/xml",
-      "description": "",
+      "type": "application/vnd.google-earth.kml+xml",
+      "description": "Footprint Preview",
       "role": "overview"
     }
   },

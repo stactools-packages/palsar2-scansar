@@ -161,9 +161,9 @@
     },
     "kml": {
       "href": "ALOS2437590500-220630_WWDR2.2GUA.kml",
-      "type": "application/xml",
+      "type": "application/vnd.google-earth.kml+xml",
       "title": "kml",
-      "description": "",
+      "description": "Footprint Preview",
       "role": "overview"
     }
   },
