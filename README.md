@@ -5,12 +5,10 @@
 - Name: palsar2-scansar
 - Package: `stactools.palsar2_scansar`
 - [stactools-palsar2-scansar on PyPI](https://pypi.org/project/stactools-palsar2-scansar/)
-- Owner: @githubusername
-- [Dataset homepage](http://example.com)
+- Owner: @wildintellect
+- [Dataset homepage](https://www.eorc.jaxa.jp/ALOS/en/dataset/palsar2_l22_e.htm)
 - STAC extensions used:
   - [proj](https://github.com/stac-extensions/projection/)
-- Extra fields:
-  - `palsar2-scansar:custom`: A custom attribute
 - [Browse the example in human-readable form](https://radiantearth.github.io/stac-browser/#/external/raw.githubusercontent.com/stactools-packages/palsar2-scansar/main/examples/collection.json)
 
 A short description of the package and its usage.
@@ -30,9 +28,16 @@ pip install stactools-palsar2-scansar
 
 Description of the command line functions
 
+<!-- markdownlint-disable MD013 -->
 ```shell
-stac palsar2-scansar create-item source destination
+stac palsar2-scansar create-collection <destination/>
+
+stac palsar2-scansar create-item <source.xml> <destination/>
+stac palsar2-scansar create-item \
+https://jaxaalos2.s3.us-west-2.amazonaws.com/palsar2/L2.2/For_STAC/ALOS2397743750-211004_WBDR2.2GUD_summary.xml \
+examples/
 ```
+<!-- markdownlint-enable MD013 -->
 
 Use `stac palsar2-scansar --help` to see all subcommands and options.
 
