@@ -72,6 +72,14 @@
           "name": "HH",
           "description": "HH band: horizontal transmit and horizontal receive"
         }
+      ],
+      "raster:bands": [
+        {
+          "sampling": "area",
+          "data_type": "uint16",
+          "spatial_resolution": 25.0,
+          "unit": "m"
+        }
       ]
     },
     "HV_SLP": {
@@ -85,6 +93,14 @@
           "name": "HV",
           "description": "HV band: horizontal transmit and vertical receive"
         }
+      ],
+      "raster:bands": [
+        {
+          "sampling": "area",
+          "data_type": "uint16",
+          "spatial_resolution": 25.0,
+          "unit": "m"
+        }
       ]
     },
     "MSK": {
@@ -95,6 +111,14 @@
       "role": [
         "data",
         "data-mask"
+      ],
+      "raster:bands": [
+        {
+          "sampling": "area",
+          "data_type": "uint8",
+          "spatial_resolution": 25.0,
+          "unit": "m"
+        }
       ]
     },
     "LIN": {
@@ -105,6 +129,14 @@
       "role": [
         "data",
         "local-incidence-angle"
+      ],
+      "raster:bands": [
+        {
+          "sampling": "area",
+          "data_type": "uint8",
+          "spatial_resolution": 25.0,
+          "unit": "m"
+        }
       ]
     },
     "summary": {

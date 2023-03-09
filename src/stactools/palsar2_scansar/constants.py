@@ -138,10 +138,10 @@ SCANSAR_ASSETS: Dict[str, AssetDefinition] = {
 
 
 SCANSAR_BANDS = {
-    "HH": {
+    "HH_SLP": {
         "data_type": DataType.UINT16,
     },
-    "HV": {
+    "HV_SLP": {
         "data_type": DataType.UINT16,
     },
     "LIN": {

@@ -7,7 +7,7 @@ from pystac import Collection, Item, Summaries
 from pystac.extensions.eo import EOExtension
 from pystac.extensions.item_assets import ItemAssetsExtension
 from pystac.extensions.projection import ProjectionExtension
-from pystac.extensions.raster import RasterExtension
+from pystac.extensions.raster import RasterBand, RasterExtension, Sampling
 from pystac.extensions.sar import SarExtension
 from pystac.extensions.sat import SatExtension
 
@@ -155,9 +155,20 @@ def create_item(
         if (asset_def := c.SCANSAR_ASSETS.get(key)) is not None:
             asset = asset_def.create_asset(os.path.basename(value))
 
-            if (band := c.SCANSAR_POLARIZATIONS.get(key)) is not None:
+            if (eoband := c.SCANSAR_POLARIZATIONS.get(key)) is not None:
                 asset_eo = EOExtension.ext(asset)
-                asset_eo.bands = [band]
+                asset_eo.bands = [eoband]
+
+            if (band := c.SCANSAR_BANDS.get(key)) is not None:
+                raster = RasterExtension.ext(asset)
+                raster.bands = [
+                    RasterBand.create(
+                        data_type=band.get("data_type"),
+                        sampling=Sampling.AREA,
+                        spatial_resolution=25.0,
+                        unit="m",
+                    )
+                ]
             item.add_asset(key, asset)
 
     # SAR extension
