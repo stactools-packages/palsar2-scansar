@@ -133,7 +133,7 @@ def create_item(
         proj_attrs.epsg = dataset.crs.to_epsg()
         proj_attrs.bbox = bbox
         proj_attrs.shape = product_metadata.get_shape  # Raster shape ProductImageSize
-        # proj_attrs.transform = [-180, 360, 0, 90, 0, 180]  # Raster GeoTransform
+        proj_attrs.transform = dataset.transform  # Raster GeoTransform
 
     # -- Add Extensions --
     # sar

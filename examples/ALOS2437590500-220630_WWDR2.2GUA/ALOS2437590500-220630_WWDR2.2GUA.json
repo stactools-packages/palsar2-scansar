@@ -14,6 +14,17 @@
       16234,
       15916
     ],
+    "proj:transform": [
+      25.0,
+      0.0,
+      374612.5,
+      0.0,
+      -25.0,
+      3087012.5,
+      0.0,
+      0.0,
+      1.0
+    ],
     "sar:frequency_band": "L",
     "sar:center_frequency": 1.2575,
     "sar:observation_direction": "right",
