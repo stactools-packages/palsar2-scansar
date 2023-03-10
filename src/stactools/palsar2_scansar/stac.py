@@ -153,7 +153,7 @@ def create_item(
     # Keeps the asset hrefs relative
     for key, value in assets_dict.items():
         if (asset_def := c.SCANSAR_ASSETS.get(key)) is not None:
-            asset = asset_def.create_asset(os.path.basename(value))
+            asset = asset_def.create_asset((value))
 
             if (eoband := c.SCANSAR_POLARIZATIONS.get(key)) is not None:
                 asset_eo = EOExtension.ext(asset)
