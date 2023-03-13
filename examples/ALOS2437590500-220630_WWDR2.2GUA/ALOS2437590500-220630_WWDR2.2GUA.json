@@ -1,0 +1,193 @@
+{
+  "type": "Feature",
+  "stac_version": "1.0.0",
+  "id": "ALOS2437590500-220630_WWDR2.2GUA",
+  "properties": {
+    "proj:epsg": 32651,
+    "proj:bbox": [
+      374612.5,
+      2689112.5,
+      780462.5,
+      3087012.5
+    ],
+    "proj:shape": [
+      16234,
+      15916
+    ],
+    "proj:transform": [
+      25.0,
+      0.0,
+      374612.5,
+      0.0,
+      -25.0,
+      3087012.5,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "sar:frequency_band": "L",
+    "sar:center_frequency": 1.2575,
+    "sar:observation_direction": "right",
+    "sar:instrument_mode": "WWD",
+    "sar:polarizations": [
+      "HH",
+      "HV"
+    ],
+    "sar:product_type": "GRD",
+    "sat:orbit_state": "ascending",
+    "datetime": "2022-06-30T15:58:28.260000Z"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          121.732262,
+          27.339137
+        ],
+        [
+          122.31674,
+          24.313445
+        ],
+        [
+          125.775968,
+          24.879538
+        ],
+        [
+          125.285874,
+          27.889129
+        ],
+        [
+          121.732262,
+          27.339137
+        ]
+      ]
+    ]
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "../collection.json",
+      "type": "application/json",
+      "title": "PALSAR-2 ScanSAR NRB L2.2"
+    },
+    {
+      "rel": "collection",
+      "href": "../collection.json",
+      "type": "application/json",
+      "title": "PALSAR-2 ScanSAR NRB L2.2"
+    },
+    {
+      "rel": "parent",
+      "href": "../collection.json",
+      "type": "application/json",
+      "title": "PALSAR-2 ScanSAR NRB L2.2"
+    }
+  ],
+  "assets": {
+    "HH_SLP": {
+      "href": "../../tests/data-files/ALOS2437590500-220630_WWDR2.2GUA_HH_SLP.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "HH",
+      "description": "HH polarization backscattering coefficient, 16-bit DN.",
+      "role": "data",
+      "eo:bands": [
+        {
+          "name": "HH",
+          "description": "HH band: horizontal transmit and horizontal receive"
+        }
+      ],
+      "raster:bands": [
+        {
+          "sampling": "area",
+          "data_type": "uint16",
+          "spatial_resolution": 25.0,
+          "unit": "m"
+        }
+      ]
+    },
+    "HV_SLP": {
+      "href": "../../tests/data-files/ALOS2437590500-220630_WWDR2.2GUA_HV_SLP.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "HV",
+      "description": "HV polarization backscattering coefficient, 16-bit DN.",
+      "role": "data",
+      "eo:bands": [
+        {
+          "name": "HV",
+          "description": "HV band: horizontal transmit and vertical receive"
+        }
+      ],
+      "raster:bands": [
+        {
+          "sampling": "area",
+          "data_type": "uint16",
+          "spatial_resolution": 25.0,
+          "unit": "m"
+        }
+      ]
+    },
+    "MSK": {
+      "href": "../../tests/data-files/ALOS2437590500-220630_WWDR2.2GUA_MSK.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "mask",
+      "description": "Quality Mask",
+      "role": [
+        "data",
+        "data-mask"
+      ],
+      "raster:bands": [
+        {
+          "sampling": "area",
+          "data_type": "uint8",
+          "spatial_resolution": 25.0,
+          "unit": "m"
+        }
+      ]
+    },
+    "LIN": {
+      "href": "../../tests/data-files/ALOS2437590500-220630_WWDR2.2GUA_LIN.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "linci",
+      "description": "Local incidence angle (degrees).",
+      "role": [
+        "data",
+        "local-incidence-angle"
+      ],
+      "raster:bands": [
+        {
+          "sampling": "area",
+          "data_type": "uint8",
+          "spatial_resolution": 25.0,
+          "unit": "m"
+        }
+      ]
+    },
+    "summary": {
+      "href": "../../tests/data-files/ALOS2437590500-220630_WWDR2.2GUA_summary.xml",
+      "type": "application/xml",
+      "title": "summary",
+      "description": "CARD4L Metadata",
+      "role": "metadata"
+    },
+    "kml": {
+      "href": "../../tests/data-files/ALOS2437590500-220630_WWDR2.2GUA.kml",
+      "type": "application/vnd.google-earth.kml+xml",
+      "title": "kml",
+      "description": "Footprint Preview",
+      "role": "overview"
+    }
+  },
+  "bbox": [
+    121.732262,
+    24.313445,
+    125.775968,
+    27.889129
+  ],
+  "stac_extensions": [
+    "https://stac-extensions.github.io/projection/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/sar/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/sat/v1.0.0/schema.json"
+  ],
+  "collection": "palsar2-scansar"
+}

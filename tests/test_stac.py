@@ -8,7 +8,7 @@ def test_create_collection() -> None:
     collection.set_self_href("")
 
     # Check that it has some required attributes
-    assert collection.id == "my-collection-id"
+    assert collection.id == "palsar2-scansar"
     # self.assertEqual(collection.other_attr...
 
     # Validate
@@ -18,10 +18,12 @@ def test_create_collection() -> None:
 def test_create_item() -> None:
     # Write tests for each for the creation of STAC Items
     # Create the STAC Item...
-    item = stac.create_item("/path/to/asset.tif")
+    item = stac.create_item(
+        "tests/data-files/ALOS2437590500-220630_WWDR2.2GUA_summary.xml"
+    )
 
     # Check that it has some required attributes
-    assert item.id == "my-item-id"
+    assert item.id == "ALOS2437590500-220630_WWDR2.2GUA"
     # self.assertEqual(item.other_attr...
 
     # Validate

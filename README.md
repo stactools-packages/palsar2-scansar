@@ -8,15 +8,21 @@
 - Owner: @wildintellect
 - [Dataset homepage](https://www.eorc.jaxa.jp/ALOS/en/dataset/palsar2_l22_e.htm)
 - STAC extensions used:
-  - [proj](https://github.com/stac-extensions/projection/)
+  - [projection](https://github.com/stac-extensions/projection/)
+  - [sar](https://github.com/stac-extensions/sar)
+  - [sat](https://github.com/stac-extensions/sat)
+  - [raster](https://github.com/stac-extensions/raster)
+  - [eo](https://github.com/stac-extensions/eo)
 - [Browse the example in human-readable form](https://radiantearth.github.io/stac-browser/#/external/raw.githubusercontent.com/stactools-packages/palsar2-scansar/main/examples/collection.json)
 
-A short description of the package and its usage.
+[stactools](https://github.com/stac-utils/stactools) package for use with
+the JAXA ALOS-2 Palsar-2 Scansar, Normalised Radar Backscatter (NRB),
+products in Cloud Optimized Geotiff format.
 
 ## STAC Examples
 
 - [Collection](examples/collection.json)
-- [Item](examples/item/item.json)
+- [Item](examples/ALOS2437590500-220630_WWDR2.2GUA/ALOS2437590500-220630_WWDR2.2GUA.json)
 
 ## Installation
 
@@ -28,7 +34,6 @@ pip install stactools-palsar2-scansar
 
 Description of the command line functions
 
-<!-- markdownlint-disable MD013 -->
 ```shell
 stac palsar2-scansar create-collection <destination/>
 
@@ -37,7 +42,6 @@ stac palsar2-scansar create-item \
 https://jaxaalos2.s3.us-west-2.amazonaws.com/palsar2/L2.2/For_STAC/ALOS2397743750-211004_WBDR2.2GUD_summary.xml \
 examples/
 ```
-<!-- markdownlint-enable MD013 -->
 
 Use `stac palsar2-scansar --help` to see all subcommands and options.
 

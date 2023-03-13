@@ -11,7 +11,11 @@ number as needed.
 
 ### Added
 
-- Nothing.
+- Collection creation
+- Item creation
+- Reading values from CARD4L xml metadata
+- Test Data (values in COGs 0 for space)
+- Collection and Item Example
 
 ### Deprecated
 
@@ -23,6 +27,6 @@ number as needed.
 
 ### Fixed
 
-- Nothing.
+- Pre-commit dependency upgrade
 
 [Unreleased]: <https://github.com/stactools-packages/palsar2-scansar/tree/main/>

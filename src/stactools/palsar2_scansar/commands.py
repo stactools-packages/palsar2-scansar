@@ -1,4 +1,5 @@
 import logging
+import os
 
 import click
 from click import Command, Group
@@ -12,7 +13,7 @@ def create_palsar2scansar_command(cli: Group) -> Command:
     """Creates the stactools-palsar2-scansar command line utility."""
 
     @cli.group(
-        "palsar2scansar",
+        "palsar2-scansar",
         short_help=("Commands for working with stactools-palsar2-scansar"),
     )
     def palsar2scansar() -> None:
@@ -23,17 +24,20 @@ def create_palsar2scansar_command(cli: Group) -> Command:
         short_help="Creates a STAC collection",
     )
     @click.argument("destination")
-    def create_collection_command(destination: str) -> None:
+    def create_collection_command(
+        destination: str, collection_id: str = "palsar2-scansar"
+    ) -> None:
         """Creates a STAC Collection
 
         Args:
-            destination (str): An HREF for the Collection JSON
+            destination (str): An HREF for the Collection to be written to (i.e. folder)
         """
+        json_path = os.path.join(destination, "collection.json")
         collection = stac.create_collection()
 
-        collection.set_self_href(destination)
+        collection.set_self_href(json_path)
 
-        collection.save_object()
+        collection.save_object(dest_href=json_path)
 
         return None
 
@@ -49,7 +53,10 @@ def create_palsar2scansar_command(cli: Group) -> Command:
         """
         item = stac.create_item(source)
 
-        item.save_object(dest_href=destination)
+        item_path = os.path.join(destination, "{}.json".format(item.id))
+        print(item_path)
+        item.set_self_href(item_path)
+        item.save_object()
 
         return None
 
