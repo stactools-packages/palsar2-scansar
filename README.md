@@ -8,15 +8,21 @@
 - Owner: @wildintellect
 - [Dataset homepage](https://www.eorc.jaxa.jp/ALOS/en/dataset/palsar2_l22_e.htm)
 - STAC extensions used:
-  - [proj](https://github.com/stac-extensions/projection/)
+  - [projection](https://github.com/stac-extensions/projection/)
+  - [sar](https://github.com/stac-extensions/sar)
+  - [sat](https://github.com/stac-extensions/sat)
+  - [raster](https://github.com/stac-extensions/raster)
+  - [eo](https://github.com/stac-extensions/eo)
 - [Browse the example in human-readable form](https://radiantearth.github.io/stac-browser/#/external/raw.githubusercontent.com/stactools-packages/palsar2-scansar/main/examples/collection.json)
 
-A short description of the package and its usage.
+[stactools](https://github.com/stac-utils/stactools) package for use with
+the JAXA ALOS-2 Palsar-2 Scansar, Normalised Radar Backscatter (NRB),
+products in Cloud Optimized Geotiff format.
 
 ## STAC Examples
 
 - [Collection](examples/collection.json)
-- [Item](examples/item/item.json)
+- [Item](examples/ALOS2437590500-220630_WWDR2.2GUA/ALOS2437590500-220630_WWDR2.2GUA.json)
 
 ## Installation
 
