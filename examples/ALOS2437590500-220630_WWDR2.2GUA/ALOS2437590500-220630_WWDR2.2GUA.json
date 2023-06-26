@@ -26,7 +26,7 @@
       1.0
     ],
     "sar:frequency_band": "L",
-    "sar:center_frequency": 1.2575,
+    "sar:center_frequency": 1.2365,
     "sar:observation_direction": "right",
     "sar:instrument_mode": "WWD",
     "sar:polarizations": [
