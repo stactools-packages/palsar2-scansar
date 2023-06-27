@@ -9,7 +9,7 @@ from stactools.testing.cli_test import CliTestCase
 from stactools.palsar2_scansar.commands import create_palsar2scansar_command
 
 
-class CommandsTest(CliTestCase):
+class CommandsTest(CliTestCase):  # type: ignore
     def create_subcommand_functions(self) -> List[Callable[[Group], Command]]:
         return [create_palsar2scansar_command]
 
