@@ -65,7 +65,7 @@ SCANSAR_SAR: Dict[str, Any] = {
     "polarizations": [sar.Polarization.HH, sar.Polarization.HV],
     "frequency_band": [sar.FrequencyBand.L],
     "instrument_mode": ["WBD", "WBS"],
-    "center_frequency": [1.2575],
+    "center_frequency": [1.23650],
     "resolution_range": [19],
     "resolution_azimuth": [25.9],
     "pixel_spacing_range": [8.583],

@@ -120,7 +120,7 @@ class ProductMetadata:
         epsg = self._root.find_text_or_throw(
             ".//CoordinateReferenceSystem[@type='EPSG']", ProductMetadataError
         )
-        return epsg
+        return epsg  # type: ignore
 
 
 def fill_sar_properties(sar_ext: SarExtension[T], manifest: XmlElement) -> None:
