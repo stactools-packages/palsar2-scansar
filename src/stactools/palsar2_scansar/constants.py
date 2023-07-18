@@ -47,7 +47,7 @@ SCANSAR_LINKS = [
         rel="documentation",
         target=("PALSAR2_CARD4L_L2.2_Geotiff_Format_Description_E_20220715.pdf"),
         media_type=pystac.MediaType.PDF,
-        title="PALSAR-2 ScanSAR NRB L2.2. Geotiff Format description",
+        title="PALSAR-2 ScanSAR NRB L2.2 Geotiff Format description",
         extra_fields={"description": "Also includes data usage information"},
     ),
     Link(
