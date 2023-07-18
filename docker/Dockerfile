@@ -19,7 +19,7 @@ RUN apt-get -y -q update \
 RUN python -m venv /opt/venv
 RUN pip install . --no-binary rasterio \
     && ls /opt/venv \
-    && rm -r /opt/venv/lib/python3.10/site-packages/stactools/palsar2_scansar
+    && rm -r $(python3 -m site --user-site)/stactools/palsar2_scansar
 
 
 FROM dependencies as builder
