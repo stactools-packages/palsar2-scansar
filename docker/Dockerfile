@@ -17,7 +17,8 @@ RUN apt-get -y -q update \
     && apt-get -y -q install build-essential \
     && rm -rf /var/lib/apt/lists/
 RUN python -m venv /opt/venv
-RUN pip install . --no-binary rasterio \
+RUN . /opt/venv/bin/activate 
+    &&pip install . --no-binary rasterio \
     && ls /opt/venv \
     && rm -r $(python -m site --user-site)/stactools/palsar2_scansar
 
