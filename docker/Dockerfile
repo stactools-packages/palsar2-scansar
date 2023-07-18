@@ -17,10 +17,9 @@ RUN apt-get -y -q update \
     && apt-get -y -q install build-essential \
     && rm -rf /var/lib/apt/lists/
 RUN python -m venv /opt/venv
-RUN . /opt/venv/bin/activate 
-    &&pip install . --no-binary rasterio \
+RUN pip install . --no-binary rasterio \
     && ls /opt/venv \
-    && rm -r $(python -m site --user-site)/stactools/palsar2_scansar
+    && rm -r /opt/venv/lib/python3.11/site-packages/stactools/palsar2_scansar
 
 
 FROM dependencies as builder
