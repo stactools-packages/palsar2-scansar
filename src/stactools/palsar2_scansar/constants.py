@@ -40,14 +40,27 @@ SCANSAR_LINKS = [
     Link(
         rel="documentation",
         target=("https://www.eorc.jaxa.jp/ALOS/en/dataset/palsar2_l22_e.htm"),
-        media_type="application/pdf",
-        title="PALSAR-2 ScanSAR NRB product description",
+        media_type=pystac.MediaType.HTML,
+        title="ALOS-2 PALSAR-2 ScanSAR Products",
+    ),
+    Link(
+        rel="documentation",
+        target=("PALSAR2_CARD4L_L2.2_Geotiff_Format_Description_E_20220715.pdf"),
+        media_type=pystac.MediaType.PDF,
+        title="PALSAR-2 ScanSAR NRB L2.2. Geotiff Format description",
         extra_fields={"description": "Also includes data usage information"},
+    ),
+    Link(
+        rel="documentation",
+        target=("https://ceos.org/ard/files/PFS/NRB/v5.5/CARD4L-PFS_NRB_v5.5.pdf"),
+        media_type=pystac.MediaType.PDF,
+        title="CARD4L CEOS-ARD NRB description",
     ),
     Link(
         rel="license",
         target="https://earth.jaxa.jp/policy/en.html",
         title="JAXA Terms of Use of Research Data",
+        media_type=pystac.MediaType.HTML,
     ),
 ]
 
