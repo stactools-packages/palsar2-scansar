@@ -133,7 +133,6 @@
       "title": "mask",
       "description": "Quality Mask",
       "role": [
-        "data",
         "data-mask"
       ],
       "raster:bands": [
@@ -151,13 +150,12 @@
       "title": "linci",
       "description": "Local incidence angle (degrees).",
       "role": [
-        "data",
         "local-incidence-angle"
       ],
       "raster:bands": [
         {
           "sampling": "area",
-          "data_type": "uint8",
+          "data_type": "uint16",
           "spatial_resolution": 25.0,
           "unit": "m"
         }

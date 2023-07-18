@@ -120,7 +120,7 @@ SCANSAR_ASSETS: Dict[str, AssetDefinition] = {
             "title": "linci",
             "type": pystac.MediaType.COG,
             "description": "Local incidence angle (degrees).",
-            "role": ["data", "local-incidence-angle"],
+            "role": ["local-incidence-angle"],
         }
     ),
     "MSK": AssetDefinition(
@@ -128,7 +128,7 @@ SCANSAR_ASSETS: Dict[str, AssetDefinition] = {
             "title": "mask",
             "type": pystac.MediaType.COG,
             "description": "Quality Mask",
-            "role": ["data", "data-mask"],
+            "role": ["data-mask"],
         }
     ),
     "summary": AssetDefinition(
@@ -158,7 +158,7 @@ SCANSAR_BANDS = {
         "data_type": DataType.UINT16,
     },
     "LIN": {
-        "data_type": DataType.UINT8,
+        "data_type": DataType.UINT16,
     },
     "MSK": {
         "data_type": DataType.UINT8,
