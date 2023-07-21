@@ -120,7 +120,7 @@ SCANSAR_ASSETS: Dict[str, AssetDefinition] = {
             "title": "linci",
             "type": pystac.MediaType.COG,
             "description": "Local incidence angle (degrees).",
-            "role": ["local-incidence-angle"],
+            "role": ["metadata", "local-incidence-angle"],
         }
     ),
     "MSK": AssetDefinition(
@@ -128,7 +128,7 @@ SCANSAR_ASSETS: Dict[str, AssetDefinition] = {
             "title": "mask",
             "type": pystac.MediaType.COG,
             "description": "Quality Mask",
-            "role": ["data-mask"],
+            "role": ["metadata", "data-mask"],
         }
     ),
     "summary": AssetDefinition(
