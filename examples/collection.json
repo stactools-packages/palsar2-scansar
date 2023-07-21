@@ -67,6 +67,7 @@
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "description": "Local incidence angle (degrees).",
       "role": [
+        "metadata",
         "local-incidence-angle"
       ]
     },
@@ -75,6 +76,7 @@
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "description": "Quality Mask",
       "role": [
+        "metadata",
         "data-mask"
       ]
     },
